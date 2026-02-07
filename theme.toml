@@ -1,0 +1,26 @@
+name = 'Amigo'
+license = 'MIT'
+licenselink = ''
+description = 'A clean, WeChat Moments-like Hugo theme.'
+
+# The home page of the theme, where the source can be found
+homepage = ''
+
+# If you have a running demo of the theme
+demosite = ''
+
+# Taxonomy terms
+tags = ['blog', 'moments', 'clean']
+features = ['pjax', 'fancybox', 'artalk']
+
+# If the theme has a single author
+[author]
+  name = 'Amigo Dev'
+  homepage = ''
+
+
+# If porting an existing theme
+[original]
+  author = 'Name of original author'
+  homepage = 'Website of original author'
+  repo = 'https://github.com/owner/repo'

@@ -1,0 +1,8 @@
+/*!
+ * Message.js v2.0.1
+ * https://github.com/snwjas/Message.js
+ * 
+ * Copyright 2018-2023 snwjas
+ * Released under the MIT license
+ */
+.qmsg-wrapper{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:99999;pointer-events:none}.qmsg{position:relative;padding:10px 12px;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.15);background:#fff;color:#606266;font-size:14px;line-height:1.4;margin-bottom:10px;display:flex;align-items:center;min-width:200px;pointer-events:auto;transition:all .3s ease-out;opacity:0;transform:translateY(-20px)}.qmsg.qmsg-show{opacity:1;transform:translateY(0)}.qmsg-icon{margin-right:10px;font-size:16px}.qmsg-content{flex:1}.qmsg-close{margin-left:10px;cursor:pointer;color:#c0c4cc;font-size:14px}.qmsg-close:hover{color:#909399}.qmsg-info .qmsg-icon{color:#909399}.qmsg-success .qmsg-icon{color:#67c23a}.qmsg-warning .qmsg-icon{color:#e6a23c}.qmsg-error .qmsg-icon{color:#f56c6c}.qmsg-loading .qmsg-icon{animation:qmsg-loading-rotate 1.5s linear infinite}@keyframes qmsg-loading-rotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}

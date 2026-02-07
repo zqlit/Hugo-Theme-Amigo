@@ -1,0 +1,62 @@
+{{ define "main" }}
+<div class="app-wrapper">
+    {{/* Back Navigation */}}
+    <nav class="nav-back">
+        <a href="{{ .Site.BaseURL }}">
+            <i class="ri-arrow-left-line"></i>
+            返回首页
+        </a>
+    </nav>
+
+    <main class="moments-feed single-view">
+        <article class="single-article">
+            
+            {{/* Right: Content Body */}}
+            <div class="article-body">
+                
+                {{/* Content - Always Full */}}
+                <div class="article-text moment-text">
+                    {{ .Content }}
+                </div>
+
+                {{/* Image Gallery */}}
+                {{ if .Params.images }}
+                <div class="moment-gallery">
+                    {{ $len := len .Params.images }}
+                    {{ if eq $len 1 }}
+                        <div class="gallery-single">
+                            {{ range .Params.images }}
+                            <a href="{{ . }}" data-fancybox="gallery-single">
+                                <img src="{{ . }}" alt="Image">
+                            </a>
+                            {{ end }}
+                        </div>
+                    {{ else }}
+                        <div class="gallery-grid {{ if eq $len 4 }}cols-2{{ else }}cols-3{{ end }}">
+                            {{ range .Params.images }}
+                            <div class="gallery-item">
+                                <a href="{{ . }}" data-fancybox="gallery-single">
+                                    <img src="{{ . }}" alt="Image">
+                                </a>
+                            </div>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                {{/* Meta */}}
+                <footer class="moment-footer" style="padding-top: 20px;">
+                    <span class="moment-time">
+                        {{ .Date.Format "2006-01-02 15:04" }}
+                        {{ if .Params.location }} · {{ .Params.location }}{{ end }}
+                    </span>
+                </footer>
+            </div>
+        </article>
+
+        {{/* Artalk Comments - Single Style (Interactive) - Moved outside card for full width */}}
+        <div class="moment-comments-area single-comments" id="comments-single" data-page-key="{{ .Permalink }}"></div>
+    </main>
+</div>
+{{ end }}

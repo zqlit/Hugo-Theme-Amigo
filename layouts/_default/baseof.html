@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="{{ "lib/artalk/Artalk.css" | relURL }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ "css/fancybox.css" | relURL }}"/>
+    <link rel="stylesheet" href="{{ "css/message.min.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <script src="{{ "js/fancybox.umd.js" | relURL }}"></script>
+    <script src="{{ "js/message.min.js" | relURL }}"></script>
+    <script src="{{ "js/pjax.min.js" | relURL }}"></script>
+    <script src="{{ "lib/artalk/Artalk.js" | relURL }}"></script>
+    <script>
+        window.amigoConfig = {
+            artalkServer: "{{ .Site.Params.artalkServer }}",
+            artalkSite: "{{ .Site.Params.artalkSite }}"
+        };
+    </script>
+    <script defer src="{{ "js/main.js" | relURL }}"></script>
+</head>
+<body>
+    <div id="app">
+        {{ block "main" . }}{{ end }}
+    </div>
+
+    <script>
+        // Initialize Fancybox
+        Fancybox.bind("[data-fancybox]", {
+            // Custom options
+        });
+
+        // PJAX setup
+        var pjax = new Pjax({
+            elements: "a",
+            selectors: ["#app", "title"]
+        });
+
+        document.addEventListener("pjax:complete", function() {
+            Fancybox.bind("[data-fancybox]", {});
+            // Re-init other scripts if needed
+        });
+    </script>
+</body>
+</html>

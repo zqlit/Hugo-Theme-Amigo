@@ -1,0 +1,110 @@
+{{ define "main" }}
+<div class="app-wrapper">
+    {{/* Header / Cover Area */}}
+    <header class="moments-header" style="background-image: url('{{ .Site.Params.cover | default "https://picsum.photos/800/600" }}');">
+        <div class="header-user">
+            <div class="header-avatar">
+                <img src="{{ .Site.Params.avatar | default "https://picsum.photos/200" }}" alt="Avatar">
+            </div>
+            <div class="header-info">
+                <h1 class="header-name">{{ .Site.Params.username | default .Site.Title }}</h1>
+            </div>
+        </div>
+    </header>
+    
+    {{/* Description (Outside Flow) */}}
+    <div class="header-signature">
+        {{ .Site.Params.description }}
+    </div>
+
+    {{/* Feed List */}}
+    <main class="moments-feed">
+        {{ range .Site.RegularPages }}
+        <article class="moment-card" id="post-{{ .File.UniqueID }}">
+            
+            {{/* Left: Avatar */}}
+            <aside class="moment-aside">
+                <img class="avatar-img" src="{{ .Params.avatar | default $.Site.Params.avatar }}" alt="User">
+            </aside>
+
+            {{/* Right: Content Body */}}
+            <div class="moment-body">
+                <h2 class="moment-author">{{ .Params.author | default $.Site.Params.username }}</h2>
+                
+                {{/* Text Content */}}
+                <div class="moment-text-wrapper">
+                    <div class="moment-text is-collapsed">
+                        {{ .Content }}
+                    </div>
+                    <button class="text-toggle" style="display: none;">全文</button>
+                </div>
+
+                {{/* Image Gallery */}}
+                {{ if .Params.images }}
+                <div class="moment-gallery">
+                    {{ $len := len .Params.images }}
+                    {{ if eq $len 1 }}
+                        {{/* Single Image */}}
+                        <div class="gallery-single">
+                            {{ range .Params.images }}
+                            <a href="{{ . }}" data-fancybox="gallery-{{ $.File.UniqueID }}">
+                                <img src="{{ . }}" alt="Image">
+                            </a>
+                            {{ end }}
+                        </div>
+                    {{ else }}
+                        {{/* Grid */}}
+                        <div class="gallery-grid {{ if eq $len 4 }}cols-2{{ else }}cols-3{{ end }}">
+                            {{ range .Params.images }}
+                            <div class="gallery-item">
+                                <a href="{{ . }}" data-fancybox="gallery-{{ $.File.UniqueID }}">
+                                    <img src="{{ . }}" alt="Image">
+                                </a>
+                            </div>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                {{/* Meta & Actions */}}
+                <footer class="moment-footer">
+                    <span class="moment-time">
+                        {{ .Date.Format "2006年1月2号" }}
+                        {{ if .Params.location }} · {{ .Params.location }}{{ end }}
+                    </span>
+                    
+                    {{/* Action Menu */}}
+                    <div class="action-wrapper">
+                        <button class="action-toggle" aria-label="Toggle Actions">
+                            <i class="ri-more-fill"></i>
+                        </button>
+                        
+                        {{/* Popover */}}
+                        <div class="action-popover">
+                            <button class="popover-btn btn-like">
+                                <i class="ri-heart-line"></i>
+                                赞
+                            </button>
+                            <span class="popover-divider"></span>
+                            <a href="{{ .Permalink }}#comments-single" class="popover-btn">
+                                <i class="ri-chat-3-line"></i>
+                                评论
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+
+                {{/* Comments Placeholder - Feed Style (Read Only) */}}
+                <div class="moment-comments-area feed-comments" id="comments-{{ .File.UniqueID }}" data-page-key="{{ .Permalink }}">
+                    <div class="moment-likes">
+                        <i class="ri-heart-3-line"></i>
+                        <span class="moment-likes-list"></span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </main>
+</div>
+{{ end }}
