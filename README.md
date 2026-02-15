@@ -9,6 +9,24 @@ Amigo 是一款为 [Hugo](https://gohugo.io/) 打造的极简博客主题，其�
 
 ---
 
+## 🎯 前置条件
+
+- **Hugo 版本**：建议使用 Hugo 0.128.2版本，以确保兼容性和最佳体验。
+- **Artalk**: 推荐使用2.8.7 版本，以支持朋友圈风格的点赞和评论功能，文档地址：https://artalk.js.org/zh-CN/docs/quick-start，推荐使用官方提供的 `artalk/artalk:2.8.7` 镜像，确保与主题兼容，命令如下：
+```bash
+docker run -d \
+    --name artalk \
+    -p 3378:23366 \
+    -v $(pwd)/data:/data \
+    -e "TZ=Asia/Shanghai" \
+    -e "ATK_LOCALE=zh-CN" \
+    -e "ATK_SITE_DEFAULT=你的站点名称" \
+    -e "ATK_SITE_URL=你的站点URL" \
+    artalk/artalk-go:2.8.7
+```
+- **Giscus**: 推荐使用最新版本，文档地址：https://giscus.app/zh-CN
+- **浏览器**：建议使用现代浏览器（如 Chrome、Firefox、Edge）以获得最佳体验。
+
 ## ✨ 主题特性
 
 - 📱 **朋友圈 UI**：高度还原微信朋友圈视觉体验，支持九宫格图片展示。
@@ -20,9 +38,9 @@ Amigo 是一款为 [Hugo](https://gohugo.io/) 打造的极简博客主题，其�
 - 🛠️ **响应式设计**：完美适配手机、平板及桌面端。
 - 🔙 **智能页眉**：滚动自动切换背景及显示标题，集成返回顶部功能。
 
-## 📸 预览图
+## 📸 预览站点
 
-*(此处建议添加您的主题截图)*
+https://5b2.cn
 
 ## 🚀 快速开始
 
@@ -31,7 +49,7 @@ Amigo 是一款为 [Hugo](https://gohugo.io/) 打造的极简博客主题，其�
 在您的 Hugo 站点目录下执行：
 
 ```bash
-git clone https://github.com/your-username/hugo-theme-amigo.git themes/Amigo
+git clone https://github.com/zqlit/Hugo-Theme-Amigo.git
 ```
 
 ### 2. 配置
