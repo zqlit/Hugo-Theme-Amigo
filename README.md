@@ -319,7 +319,7 @@ layout: "friends"
 <table>
   <tr>
     <td align="center">
-      <img src="https://usj.cc/image/reward/new.jpg" alt="微信赞赏" width="200" /><br />
+      <img src="https://usj.cc/image/reward/new.png" alt="微信赞赏" width="200" /><br />
       微信支付
     </td>
     <td align="center">
