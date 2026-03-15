@@ -50,7 +50,7 @@ theme = 'Amigo'
   # 评论系统设置
   # ---------------------------------------------------------------------------------------
   # 评论模式：选 "artalk"、"twikoo"、"giscus" 或者 "none"（关掉评论）
-  commentMode = "artalk"
+  commentMode = "none"
 
   # 1. Artalk 评论（官方文档：https://artalk.js.org/）
   artalkServer = "https://your-artalk-server.com"
